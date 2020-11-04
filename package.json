@@ -1,0 +1,22 @@
+{
+  "name": "jsnad-study-guide",
+  "version": "1.0.0",
+  "description": "Study guide for the Linux Foundation's OpenJS Node.js Application Developer (JSNAD) Certification",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danwoods/JSNAD-study-guide.git"
+  },
+  "author": "Dan Woodson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danwoods/JSNAD-study-guide/issues"
+  },
+  "homepage": "https://github.com/danwoods/JSNAD-study-guide#readme",
+  "devDependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
