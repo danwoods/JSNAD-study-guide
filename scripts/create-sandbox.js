@@ -5,11 +5,16 @@
 
 // Use https://reqres.in to simulate/sandbox network requests
 const fs = require('fs')
-const requestedFiles = process.argv.slice(2)
 const https = require('https')
+const path = require('path')
+
+
+/** Directory to upload */
+const directory = process.argv[2]
 
 /** JSON object containing files and their contents */
 const files = {
+  // Default `package.json`; expected to be overridden
   'package.json': {
     content: {
       dependencies: {}
@@ -29,9 +34,9 @@ const responseHandler = res => {
 }
 
 // Add passed in files to `files`
-requestedFiles.forEach(
+fs.readdirSync(directory).forEach(
   file =>
-    (files[file] = { content: fs.readFileSync(file, { encoding: 'utf8' }) })
+    (files[file] = { content: fs.readFileSync(path.resolve(directory,file), { encoding: 'utf8' }) })
 )
 
 /** `files` ready to send */
