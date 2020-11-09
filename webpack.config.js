@@ -1,11 +1,11 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const marked = require("marked");
-const fs = require("fs");
-const path = require("path");
-
+const fs = require('fs')
+const path = require('path')
+const marked = require('marked')
 
 // Assuming I add a bunch of .md files in my ./md dir.
-const MARKDOWN_FILE_DIR = "./content";
+const MARKDOWN_FILE_DIR = './content'
 
 /*
  * Generates an Array with the following data:
@@ -17,66 +17,67 @@ const MARKDOWN_FILE_DIR = "./content";
  * ]
  */
 const markdownFilesData = fs
-    // Read directory contents
-    .readdirSync(MARKDOWN_FILE_DIR)
-    // Take only .md files
-    .filter(filename => /\.md$/.test(filename))
-    // Normalize file data.
-    .map(filename => {
-        return {
-            markdown: fs.readFileSync(path.join(MARKDOWN_FILE_DIR, filename), {encoding: "utf8"}),
-            filename,
-        };
-    });
+  // Read directory contents
+  .readdirSync(MARKDOWN_FILE_DIR)
+  // Take only .md files
+  .filter((filename) => /\.md$/.test(filename))
+  // Normalize file data.
+  .map((filename) => {
+    return {
+      markdown: fs.readFileSync(path.join(MARKDOWN_FILE_DIR, filename), {
+        encoding: 'utf8'
+      }),
+      filename
+    }
+  })
 
-    console.log(markdownFilesData)
-    
+console.log(markdownFilesData)
 
-// const makeHtmlConfig = ({ filename, markdown }) => ({
-//     template: "pug!templates/index.pug",
-//     cache: true,
-//     chunks: ["main"],
-//     title: `Page Number ${n}`,
-//     filename: `pages/${filename}.html`,
-//     // Parses the markdown string and converts to HTML string
-//     bodyHTML: marked(markdown),
-// });
+const renderer = new marked.Renderer()
 
 module.exports = {
-    entry: {
-        // XXX: Automate
-        streams: "./content/01-Streams/README.md"
-    },
+  entry: {
+    // XXX: Automate
+    streams: './content/01-Streams/README.md'
+  },
   output: {
-    filename: 'streams.html',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'dummy.html',
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.md$/,
         use: [
-            {
-                loader: "html-loader"
-            },
-            {
-                loader: "markdown-loader",
-                options: {
-                    /* your options here */
-                }
-            }
+          {
+            loader: 'html-loader'
+          },
+          {
+            loader: 'markdown-loader',
+            options: {}
+          }
         ]
-    }]
-},
-plugins: [
+      }
+    ]
+  },
+  plugins: [
     new HtmlWebpackPlugin({
       title: 'JSNAD Study Guide',
       template: './content/README.md'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'JSNAD Study Guide - Streams',
+      template: './content/01-Streams/README.md',
+      filename: 'streams.html',
+      meta: {
+        description: 'Learn Node Streams'
+      }
     })
   ]
 }
-    // plugins: [
-    //     // map the above function to the array of file data
-    //     ...markdownFiles.map(makeHtmlConfig),
-    // ],
+// plugins: [
+//     // map the above function to the array of file data
+//     ...markdownFiles.map(makeHtmlConfig),
+// ],
 
-    // ...
+// ...
