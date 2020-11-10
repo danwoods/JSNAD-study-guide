@@ -8,7 +8,7 @@ Under the hood, **Streams** are implemented using [EventEmitter](https://nodejs.
 
 ## Use Cases
 
-- Networking - Or any variable speed read/write data source
+- Networking - Or any variable speed read/write data source (in networking this is due to network speed)
 
 ## Common Errors
 
