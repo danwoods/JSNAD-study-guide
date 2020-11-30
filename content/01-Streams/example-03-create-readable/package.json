@@ -1,0 +1,16 @@
+{
+  "name": "jsnad-study-guide--streams-reading",
+  "description": "Example of reading from a Stream",
+  "keywords": [
+    "node",
+    "study-guide",
+    "streams",
+    "example",
+    "JSNAD"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "node ./test.js"
+  }
+}

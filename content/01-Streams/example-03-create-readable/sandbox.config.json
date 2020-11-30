@@ -1,0 +1,6 @@
+{
+  "template": "node",
+  "view": "terminal",
+  "container": { "startScrtipt": "start" },
+  "startScrtipt": "start"
+}

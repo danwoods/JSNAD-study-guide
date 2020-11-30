@@ -14,6 +14,10 @@ Under the hood, **Streams** are implemented using [EventEmitter](https://nodejs.
 
 - Networking - Or any variable speed read/write data source (in networking this is due to network speed)
 
+## Terms
+
+- Duplex: A stream that can be both read from and written to
+
 ## Common Errors
 
 - Applying incorrectly - Using to read files when files sizes are known, small, and asynchronicity is not required. https://whistlr.info/2020/nodejs-streams/#speed-comparison
@@ -32,3 +36,4 @@ Under the hood, **Streams** are implemented using [EventEmitter](https://nodejs.
 ## References
 
 - [Node Docs](https://nodejs.org/dist/latest-v12.x/docs/api/stream.html#stream_stream)
+- [Stream Handbook](https://github.com/substack/stream-handbook)
