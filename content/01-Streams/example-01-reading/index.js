@@ -1,5 +1,5 @@
 /**
- * @file Creates a readable stream from a file, reads the contentd of the file 
+ * @file Creates a readable stream from a file, reads the contents of the file
  *       into a variable, and prints the variable.
  **/
 
